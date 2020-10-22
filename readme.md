@@ -179,8 +179,6 @@ focus on to specified field
 
 # Example
 
-[Expo Snack](https://snack.expo.io/@sbycrosz/react-native-credit-card-example)
-
 In the `example` directory, run:
 
 ```bash

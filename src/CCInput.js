@@ -67,7 +67,7 @@ export default class CCInput extends Component {
   _onChange = value => this.props.onChange(this.props.field, value);
 
   render() {
-    const { label, value, placeholder, status, keyboardType,
+    const { field,label, value, placeholder, status, keyboardType,
             containerStyle, inputStyle, labelStyle,
             validColor, invalidColor, placeholderColor,
             additionalInputProps } = this.props;
@@ -85,6 +85,7 @@ export default class CCInput extends Component {
               s.baseInputStyle,
               inputStyle,
               ((validColor && status === "valid") ? { color: validColor } :
+              (status !== "valid" && field === "number" && (value.length > 0 && value.match(/\d/g).length > 16)) ? { color: invalidColor } :
               (invalidColor && status === "invalid") ? { color: invalidColor } :
               {}),
             ]}
@@ -93,7 +94,7 @@ export default class CCInput extends Component {
             placeholder={placeholder}
             value={value}
             onFocus={this._onFocus}
-            onChangeText={this._onChange} />
+            onChangeText={this._onChange}/>
         </View>
       </TouchableOpacity>
     );
